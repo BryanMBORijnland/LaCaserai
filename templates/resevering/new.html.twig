@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Resevering{% endblock %}
+
+{% block body %}
+    <h1>Create new Resevering</h1>
+
+    {{ include('resevering/_form.html.twig') }}
+
+    <a href="{{ path('resevering_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="mapouter center-div">
+        <div class="gmap_canvas">
+            <iframe width="1080" height="570" id="gmap_canvas" src="https://maps.google.com/maps?q=Romana%2C%2000047%20Marino%2C%20Itali%C3%AB&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <a href="https://www.pureblack.de"></a>
+        </div>
+        <style>
+            .mapouter{position:relative;text-align:right;height:570px;width:950px;}.gmap_canvas {overflow:hidden;background:none!important;height:570px;width:950px;}
+        </style>
+    </div>
+{% endblock %}

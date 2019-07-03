@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resevering index{% endblock %}
+
+{% block body %}
+    <h1>Resevering index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Room</th>
+                <th>People</th>
+                <th>Dogs</th>
+                <th>Days</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resevering in reseverings %}
+            <tr>
+                <td>{{ resevering.id }}</td>
+                <td>{{ resevering.room }}</td>
+                <td>{{ resevering.people }}</td>
+                <td>{{ resevering.dogs }}</td>
+                <td>{{ resevering.days }}</td>
+                <td>
+                    <a href="{{ path('resevering_show', {'id': resevering.id}) }}">show</a>
+                    <a href="{{ path('resevering_edit', {'id': resevering.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('resevering_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+{#Loads in all the requiered CDN's for fully functional views regarding bootstrap and related#}
+<link rel="stylesheet" href="/CSS/Style.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #7a0000;">
+        <a href="Index.html">
+            <img class="navbar-brand rounded" style="width:150px; height: 100px;" src="images/LCLogo.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li {% if app.request.attributes.get( '_route' ) == "index" %} class="active"{% endif %}>
+                    <a class="nav-link" href="/"><h3>Home</h3></a>
+                </li>
+                <li {% if app.request.attributes.get( '_route' ) == "overzicht" %} class="active"{% endif %}>
+                    <a class="nav-link" href="/resevering"><h3>Resevering</h3></a>
+                </li>
+                <li {% if app.request.attributes.get( '_route' ) == "prijzen" %} class="active"{% endif %}>
+                    <a class="nav-link" href="/prijzen"><h3>Prijzen</h3></a>
+                </li>
+                <li {% if app.request.attributes.get( '_route' ) == "recensies" %} class="active"{% endif %}>
+                    <a class="nav-link" href="/recensies"><h3>Recensies</h3></a>
+                </li>
+                <li {% if app.request.attributes.get( '_route' ) == "locatie" %} class="active"{% endif %}>
+                    <a class="nav-link" href="/locatie"><h3>Locatie</h3></a>
+                </li>
+                <li {% if app.request.attributes.get( '_route' ) == "overons" %} class="active"{% endif %}>
+                    <a class="nav-link" href="/overons"><h3>Overons</h3></a>
+                </li>
+                {#{% if app.request.get('_route') == "overons" %}#}
+                    {#<h1> ewa </h1>#}
+                {#{% else %}#}
+                    {#<h1> doeg </h1>#}
+                {#{% endif %}#}
+            </ul>
+            <li class="nav-item ml-auto d-none d-sm-block">
+                {% if app.user %}
+                    <a class="nav-link" style="color: #ffffff" href="{{ path('fos_user_security_logout') }}"><h3>Logout</h3> {{ app.user }}</a>
+                {% else %}
+                    <a class="nav-link" style="color: #ffffff" href="{{ path('fos_user_security_login') }}"><h3>Login</h3></a>
+                {% endif %}
+            </li>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <h1><span class="navbar-text ml-auto d-none d-sm-block"> <a href="Index.html" style="color: #000000; text-decoration: n"> La Caserai</a></span></h1>
+        </div>
+    </nav>
+        {% block fos_user_content %}
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    <!-- Footer -->
+    <footer class="page-footer font-small indigo " style="background-color: #7a0000;">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: #ffffff">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Very long link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Very long link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Very long link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Very long link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: #ffffff">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: #ffffff">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-3 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: #ffffff">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/"><span style="font-size: 2em; color: #ffffff;"><i class="fab fa-instagram footicon"></i></span></a>
+                        </li>
+                        <li>
+                            <a href="/"><span style="font-size: 2em; color: #ffffff;"><i class="fab fa-facebook-square footicon"></i></span></a>
+                        </li>
+                        <li>
+                            <a href="/"><span style="font-size: 2em; color: #ffffff;"><i class="fab fa-twitter-square footicon"></i></span></a>
+                        </li>
+                        <li>
+                            <a href="/"><span style="font-size: 2em; color: #ffffff;"><i class="fab fa-pinterest-square footicon"></i></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="color: #ffffff; background-color: #640000" >© 2019 Copyright:
+            <a href="/" style="color: #ffffff"> La Caserai </a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    </body>
+</html>
